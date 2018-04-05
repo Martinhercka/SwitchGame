@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SwitchGame
-{
+public class SwitchGame {
     private JPanel panel1;
     private JButton img13;
     private JButton img14;
@@ -29,8 +28,7 @@ public class SwitchGame
     private boolean[][] field = new boolean[4][4];
 
 
-    public SwitchGame()
-    {
+    public SwitchGame() {
         exitGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,6 +39,7 @@ public class SwitchGame
             @Override
             public void actionPerformed(ActionEvent e) {
                 processClick(1);
+
             }
         });
         img2.addActionListener(new ActionListener() {
@@ -137,23 +136,34 @@ public class SwitchGame
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                state=State.PLAYING;
-                for(int i =0;i<4;i++)
-                {
-                    for (int j=0;j<3;j++)
-                    {
-                        field[i][j]=false;
+                state = State.PLAYING;
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        field[i][j] = false;
                     }
                 }
             }
         });
     }
-    private void processClick(int i)
+
+    private void processClick(int i) {
+        try {
+            if (state == State.PLAYING)
+            {
+                System.out.println("You clicked on " + i);
+                toogle(2);
+            }
+
+
+    }catch(
+    Exception e)
+
     {
-        if (state == State.PLAYING)
-        System.out.println("You clicked on "+i);
-        toogle(1);
+        e.printStackTrace();
     }
+
+}
+
 
     public void toogle(int i) throws Exception
     {
